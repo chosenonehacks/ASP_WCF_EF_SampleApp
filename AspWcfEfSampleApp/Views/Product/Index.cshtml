@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<h3>Products List</h3>
+@using (Html.BeginForm("search", "Product"))
+{
+    <input type="text" name="id"/><input type="submit" value="Search"/>
+    <br/>
+    <input type="radio" name="condition" value="byId" checked="checked"/><span>By Id</span>
+    <input type="radio" name="condition" value="byDate"  /><span>By Date</span>
+
+}
+<table style="width: 100%;" >
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Creation Date</th>
+    </tr>
+    @foreach (var product in ViewBag.listProducts)
+    {
+        <tr>
+            <td>@product.Id</td>
+            <td>@product.Name</td>
+            <td>@product.Price</td>
+            <td>@product.Quantity</td>
+            <td>@product.CreationDate</td>
+        </tr>
+    }
+</table>
+
